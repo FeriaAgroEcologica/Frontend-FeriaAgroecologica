@@ -1,30 +1,28 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import Particule from "../../components/layout/Particule.jsx";
+import "./blog.css";
 
 function BlogCard({ post }) {
   return (
-    <li
-      className="mb-4 p-3 border rounded shadow-sm bg-white"
-      style={{ wordBreak: 'break-word' }}
-    >
-      <h2
-        className="text-truncate"
-        style={{ maxWidth: '100%', color: 'green' }}
-      >
-        {post.title}
-      </h2>
-      {post.user && <p><strong>Autor:</strong> {post.user.name}</p>}
-      <p><small>Publicado el {new Date(post.createdAt).toLocaleDateString()}</small></p>
+    <div className="blog-card">
       {post.imageUrl && (
-        <img
-          src={post.imageUrl}
-          alt={post.title}
-          style={{ maxWidth: '100%', maxHeight: '300px', objectFit: 'cover' }}
-          className="mb-3"
-        />
+        <div className="blog-image-wrapper">
+          <img src={post.imageUrl} alt={post.title} className="blog-image" />
+        </div>
       )}
-      <p style={{ whiteSpace: 'pre-wrap', overflowWrap: 'break-word' }}>{post.description}</p>
-    </li>
+      <div className="blog-content">
+        <h2 className="blog-title">{post.title}</h2>
+        {post.user && (
+          <p className="blog-author">
+            <strong>Autor:</strong> {post.user.name}
+          </p>
+        )}
+        <p className="blog-date">
+          <small>{new Date(post.createdAt).toLocaleDateString()}</small>
+        </p>
+        <p className="blog-description">{post.description}</p>
+      </div>
+    </div>
   );
 }
 
@@ -36,8 +34,8 @@ export default function BlogPage() {
   useEffect(() => {
     async function fetchBlogPosts() {
       try {
-        const res = await fetch('http://localhost:3000/api/blogs');
-        if (!res.ok) throw new Error('Error al obtener blog posts');
+        const res = await fetch("http://localhost:3000/api/blogs");
+        if (!res.ok) throw new Error("Error al obtener blog posts");
 
         const data = await res.json();
         setPosts(Array.isArray(data) ? data : []);
@@ -51,27 +49,25 @@ export default function BlogPage() {
     fetchBlogPosts();
   }, []);
 
-  if (loading) return <p>Cargando blog posts...</p>;
-  if (error) return <p>Error: {error}</p>;
-
   return (
     <>
-      {/* Fondo de partículas */}
       <Particule />
+      <section className="blog-section">
+        <div className="container">
+          <h1 className="blog-heading">Historias y Noticias</h1>
+          {loading && <p className="loading-text">Cargando blog posts...</p>}
+          {error && <p className="error-text">Error: {error}</p>}
+          {!loading && posts.length === 0 && (
+            <p className="empty-text">No hay blog posts disponibles.</p>
+          )}
 
-      {/* Contenedor principal con z-index para estar encima */}
-      <div className="container mt-4" style={{ position: 'relative', zIndex: 1 }}>
-        <h1 style={{ color: 'green' }}>Blog Posts</h1>
-        {posts.length === 0 ? (
-          <p>No hay blog posts disponibles.</p>
-        ) : (
-          <ul className="list-unstyled">
-            {posts.map(post => (
+          <div className="blog-grid">
+            {posts.map((post) => (
               <BlogCard key={post.id} post={post} />
             ))}
-          </ul>
-        )}
-      </div>
+          </div>
+        </div>
+      </section>
     </>
   );
 }
