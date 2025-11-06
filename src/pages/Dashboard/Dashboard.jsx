@@ -1,11 +1,14 @@
+// src/pages/Dashboard/Dashboard.jsx
 import React, { useEffect, useState } from 'react';
-import { apiFetch } from '../services/api';
-import ProductForm from '../components/ProductForm';
-import NewsModal from '../components/NewsModal';
-import DashboardHeader from '../components/DashboardHeader';
-import DashboardActions from '../components/DashboardActions';
-import ProductList from '../components/ProductList.jsx';
-import BlogList from '../components/BlogList.jsx';
+import { apiFetch } from '../../api/apiClient';
+
+// ✅ Importaciones corregidas según estructura del proyecto
+import ProductForm from '../../components/product/ProductForm';
+import NewsModal from '../../components/NewsModal';
+import DashboardHeader from '../../components/dashboard/DashboardHeader';
+import DashboardActions from '../../components/dashboard/DashboardActions';
+import ProductList from '../../components/product/ProductList';
+import BlogList from '../../components/blog/BlogList';
 
 const Dashboard = () => {
   const [products, setProducts] = useState([]);

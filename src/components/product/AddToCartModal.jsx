@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { Modal, Button, Image } from "react-bootstrap";
 import { BsX } from "react-icons/bs";
-import Particule from "./Particule"; // Asegúrate que la ruta sea correcta
+import Particule from "../../components/layout/Particule.jsx";
 
 export default function AddToCartModal({ product, onConfirm, onClose }) {
   const inputRef = useRef(null);

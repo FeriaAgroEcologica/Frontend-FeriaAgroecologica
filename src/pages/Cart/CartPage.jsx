@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { useCart } from "../context/CartContext";
 import { Table, Button, Form, Alert } from "react-bootstrap";
-import InvoiceModal from "../components/InvoiceModal.jsx";
-import Particule from "../components/Particule"; // Asegúrate de que la ruta sea correcta
+import { useCart } from "../../context/CartContext.jsx";
+import InvoiceModal from "../../components/dashboard/InvoiceModal.jsx";
+import Particule from "../../components/layout/Particule.jsx";
 
 export default function CartPage() {
   const { items: cart, setItems: setCart, removeFromCart, total } = useCart();
@@ -25,6 +25,7 @@ export default function CartPage() {
     setLoading(true);
     setMessage("");
     try {
+      // Simula procesamiento de compra
       await new Promise((res) => setTimeout(res, 1000));
 
       const newInvoice = { id: Date.now(), items: [...cart], total };
@@ -112,7 +113,11 @@ export default function CartPage() {
           {loading ? "Procesando..." : "Finalizar compra"}
         </Button>
 
-        {message && <Alert variant="info" className="mt-3">{message}</Alert>}
+        {message && (
+          <Alert variant="info" className="mt-3">
+            {message}
+          </Alert>
+        )}
       </div>
 
       <InvoiceModal

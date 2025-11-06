@@ -1,9 +1,12 @@
+// src/pages/Home/Home.jsx
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useCart } from "../context/CartContext";
-import ProductCard from "../components/ProductCard";
-import AddToCartModal from "../components/AddToCartModal";
-import SearchBar from "../components/SearchBar"; // asegúrate de que la ruta es correcta
+import { useCart } from "../../context/CartContext";
+
+// ✅ Importaciones corregidas según la estructura real
+import ProductCard from "../../components/product/ProductCard";
+import AddToCartModal from "../../components/product/AddToCartModal";
+import SearchBar from "../../components/SearchBar";
 
 const Home = () => {
   const [productos, setProductos] = useState([]);

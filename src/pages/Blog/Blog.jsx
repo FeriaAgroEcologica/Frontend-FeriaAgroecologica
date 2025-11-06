@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Particule from '../components/Particule.jsx'; // Asegúrate que la ruta sea correcta
+import Particule from "../../components/layout/Particule.jsx";
 
 function BlogCard({ post }) {
   return (

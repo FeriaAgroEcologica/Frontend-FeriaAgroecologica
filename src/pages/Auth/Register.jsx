@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Particule from '../components/Particule.jsx'; // Ajusta la ruta según tu estructura
+import Particule from "../../components/layout/Particule.jsx";
 
 export default function Register() {
   const [form, setForm] = useState({
