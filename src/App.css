@@ -1,0 +1,49 @@
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: none;
+  border-radius: 10px;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+}
+
+.card-img-top {
+  object-fit: cover;
+  height: 200px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.card-title {
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.card-text {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.btn-outline-success:hover {
+  background-color: #25d366;
+  color: white;
+}
+
+.btn-primary {
+  background-color: #8ca549;
+  border-color: #13270a;
+}
+
+.btn-primary:hover {
+  background-color: #273117;
+}
+
+.modal-title {
+  font-weight: 600;
+}
+
+input[type="number"] {
+  border-radius: 6px;
+}
