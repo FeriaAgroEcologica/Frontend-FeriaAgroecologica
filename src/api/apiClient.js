@@ -15,7 +15,6 @@ export async function apiFetch(endpoint, options = {}) {
       localStorage.clear();
       window.location.href = '/login';
     }
-
     const errText = await res.text();
     throw new Error(errText || 'Error en la petición');
   }
